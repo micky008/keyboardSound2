@@ -25,6 +25,8 @@ public class SoundList {
         this.config = config;
         refresh();
     }
+    
+    private SoundList(){}
 
     public void refresh() {
         try {
@@ -34,6 +36,11 @@ public class SoundList {
         }
     }
 
+    public static void refreshStatic(){
+        SoundList sl = new SoundList();
+        sl.refresh();
+    }
+    
     public static Map<Integer, String> getSongsVisu() {
         return songsVisu;
     }

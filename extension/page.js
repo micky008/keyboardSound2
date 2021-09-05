@@ -9,8 +9,8 @@ reconnect();
 })
 	 
 function reconnect(){
-	readlist = new WebSocket("ws://localhost:9998/readlist");
-	readinput = new WebSocket("ws://localhost:9998/inputsound");
+	readlist = new WebSocket("ws://micky.ovh:9998/readlist");
+	readinput = new WebSocket("ws://micky.ovh:9998/inputsound");
 	readlist.onmessage = readlistOnMessage;
 	readlist.onclose = onClose;    
 	readlist.onopen = onOpen;

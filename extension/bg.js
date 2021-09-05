@@ -4,7 +4,7 @@ var audioElement = new Audio();
 reconnect();
 
 function reconnect(){
-	readsound = new WebSocket("ws://localhost:9998/writesound");
+	readsound = new WebSocket("ws://micky.ovh:9998/writesound");
 	readsound.onmessage = readsoundOnMessage;
 }
 
