@@ -1,4 +1,4 @@
-package com.msc.keyboardsound2.controller;
+package com.msc.keyboardsound2.webservice.controller;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -23,6 +23,7 @@ public class EntryPoint {
     @Path("refresh")
     @Produces(MediaType.APPLICATION_JSON)
     public Response refresh() {
+        
 	return Response.ok().build();
     }
        

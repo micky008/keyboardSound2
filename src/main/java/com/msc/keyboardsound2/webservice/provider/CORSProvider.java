@@ -1,4 +1,4 @@
-package com.msc.keyboardsound2.provider;
+package com.msc.keyboardsound2.webservice.provider;
 
 import java.io.IOException;
 import javax.ws.rs.container.ContainerRequestContext;

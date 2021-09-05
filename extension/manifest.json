@@ -1,0 +1,20 @@
+{
+   "manifest_version":2,
+   "name":"KeyboardSound2",
+   "version":"1.0",
+   "description":"Histoire de bien foutre la merde dans l'équipe dev",
+   "icons":{
+      "32":"icons/caca-32.png",
+	  "48":"icons/caca-48.png"
+   },  
+   "browser_action": {
+		"default_icon": "icons/caca-32.png",
+		"default_title": "KeyboardSound2",
+		"default_popup": "page.html"
+  },
+   "background": {
+		"scripts" : ["bg.js"]  
+	}
+  
+
+}

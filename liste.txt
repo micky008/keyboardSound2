@@ -1,0 +1,4 @@
+# Fonctionne qu'en mp3
+C:/Users/Michael/Music/sons/ah.mp3;AH
+C:/Users/Michael/Music/sons/nani.mp3;NANI
+C:/Users/Michael/Music/sons/non.mp3;NON

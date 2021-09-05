@@ -1,0 +1,13 @@
+{
+    "webservice" : {
+        "port" : 9997,
+        "domain" : "http://localhost/"                
+    },
+    "websocket" :{
+        "port" : 9998,
+        "domain" : "0.0.0.0"                
+    },
+    "server" : {
+      "liste" : "c:/Users/Michael/Documents/NetBeansProjects/keyboardSound2/liste.txt"  
+    }
+}

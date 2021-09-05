@@ -1,0 +1,41 @@
+<html>
+<head>
+</head>
+<body>
+    <textarea id="ta"></textarea>
+    <input type="text" id="myText" /><button onclick="mysend()">SEND</button>
+</body>
+<script>
+var readlist = new WebSocket("ws://localhost:9998/readlist");
+var readsound = new WebSocket("ws://localhost:9998/writesound");
+var readinput = new WebSocket("ws://localhost:9998/inputsound");
+readlist.onmessage = function (event) {
+    document.getElementById('ta').value = event.data;
+  console.log(event.data);
+}
+
+readlist.onclose = function (event) {
+     document.getElementById('ta').value = 'ws fermé';
+    }
+    
+readlist.onopen = function (event) {
+     document.getElementById('myText').value = 'réouvert';
+    }
+
+readsound.onmessage = function (event) {
+    let audioElement = new Audio();
+    audioElement.src = 'data:audio/mp3;base64, ' +event.data;
+    audioElement.load();
+    audioElement.play();
+}
+
+
+
+function mysend(){        
+        readinput.send(document.getElementById('myText').value);
+}
+</script>
+</html>
+
+
+test websocket
