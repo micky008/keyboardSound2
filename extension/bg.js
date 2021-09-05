@@ -5,7 +5,6 @@ reconnect();
 
 function reconnect(){
 	readsound = new WebSocket("ws://localhost:9998/writesound");
-	readinput = new WebSocket("ws://localhost:9998/inputsound");
 	readsound.onmessage = readsoundOnMessage;
 }
 

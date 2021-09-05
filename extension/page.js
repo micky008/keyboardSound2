@@ -48,11 +48,3 @@ function clearUl(){
 		ul.removeChild( ul.firstChild);
 	}
 }
-
-function patchworkMessage(request, sender, sendResponse) {
-		if (request.action == 'getNextTrack'){
-			controle(true);
-			play();
-		} 
-		sendResponse({ok : true});
-}
