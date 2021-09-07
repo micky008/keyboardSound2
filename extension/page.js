@@ -16,8 +16,9 @@ function reconnect(){
 	readlist.onopen = onOpen;
 }
 
-function mysend(){        
-	readinput.send(document.getElementById('myText').value);
+function mysend(i){        
+	//console.log(i);
+	readinput.send(i);
 }
 
 
@@ -25,11 +26,20 @@ function readlistOnMessage(event) {
 	clearUl();
 	let json = JSON.parse(event.data);
 	let keys = Object.keys(json);
-	let ul = document.getElementById('myUl');
+	let table = document.getElementById('myTable');
 	for (let key of keys){
-		li = document.createElement("li");
-		li.innerHTML = key+" - "+json[key];
-		ul.appendChild(li);
+		let tr = document.createElement("tr");
+		let td1 = document.createElement("td");	
+		let td2 = document.createElement("td");	
+		let mybutton = document.createElement("button");	
+		mybutton.type='button';
+		mybutton.innerHTML='GO';
+		mybutton.addEventListener('click',mysend.bind(null,key));
+		td1.innerHTML = `${json[key]}`;	
+		td2.appendChild(mybutton);
+		tr.appendChild(td1);
+		tr.appendChild(td2);
+		table.appendChild(tr);
 	}
 }
 	
@@ -39,11 +49,10 @@ function onClose(event) {
 
 function onOpen(event) {
 	document.getElementById('reco').hidden = true;
-	console.log("server started")
 }
 
 function clearUl(){
-	let ul = document.getElementById('myUl');
+	let ul = document.getElementById('myTable');
 	while( ul.firstChild) {
 		ul.removeChild( ul.firstChild);
 	}
