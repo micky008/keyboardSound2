@@ -1,5 +1,5 @@
-var readlist;
-var readinput;
+var readlist = undefined;
+var readinput = undefined;
 
 reconnect();
 
@@ -41,6 +41,12 @@ function readChannelName(event) {
 }
 
 function readSongList(channelName) {
+	if (readlist != undefined) {
+		readlist.close();
+	}
+	if (readinput != undefined) {
+		readinput.close();
+	}
 	readlist = new WebSocket("ws://micky.ovh:9998/readlist/" + channelName);
 	readinput = new WebSocket("ws://micky.ovh:9998/inputsound/" + channelName);
 	readlist.onmessage = readlistOnMessage;

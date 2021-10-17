@@ -1,7 +1,7 @@
 {
    "manifest_version": 2,
    "name": "KeyboardSound2",
-   "version": "2.0",
+   "version": "2.2",
    "description": "Histoire de bien foutre la merde dans les équipes",
    "icons": {
       "32": "icons/caca-32.png",

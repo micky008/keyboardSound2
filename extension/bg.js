@@ -1,4 +1,4 @@
-var readsound;
+var readsound = undefined;
 
 
 setInterval(reconnect, 1000 * 60 * 5);
@@ -14,7 +14,7 @@ function notify(message, sender, sendResponse) {
 }
 
 function reconnect() {
-	if (readsound) {
+	if (readsound != undefined) {
 		readsound.close();
 	}
 	chrome.storage.local.get('chan', (store) => {
