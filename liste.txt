@@ -1,4 +1,11 @@
 # Fonctionne qu'en mp3
-C:/Users/Michael/Music/sons/ah.mp3;AH
-C:/Users/Michael/Music/sons/nani.mp3;NANI
-C:/Users/Michael/Music/sons/non.mp3;NON
+DEV;C:/Users/Michael/Music/sons/ah.mp3;AH
+DEV;C:/Users/Michael/Music/sons/nani.mp3;NANI
+DEV;C:/Users/Michael/Music/sons/non.mp3;NON
+DEV;C:/Users/Michael/Music/sons/coucou.mp3;Coucou
+DEV;C:/Users/Michael/Music/sons/art.mp3;Art
+
+OPS;C:/Users/Michael/Music/sons/ops/content.mp3;Content
+OPS;C:/Users/Michael/Music/sons/ops/forcage.mp3;Forcage
+OPS;C:/Users/Michael/Music/sons/ops/Heinrish.mp3;Heinrish
+

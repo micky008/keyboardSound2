@@ -1,5 +1,7 @@
 package com.msc.keyboardsound2.server;
 
+import com.msc.keyboardsound2.server.entity.Config;
+import com.msc.keyboardsound2.server.entity.ListLine;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -7,8 +9,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.apache.commons.io.FileUtils;
 
 /**
@@ -17,56 +17,44 @@ import org.apache.commons.io.FileUtils;
  */
 public class SoundList {
 
-    private Config config;
-    private static Map<Integer, String> songsRaw;
-    private static Map<Integer, String> songsVisu;
+    private Map<Integer, String> songsRaw;
+    private Map<Integer, String> songsVisu;
 
-    public SoundList(Config config) {
-        this.config = config;
-        refresh();
-    }
-    
-    private SoundList(){}
-
-    public void refresh() {
-        try {
-            read();
-        } catch (IOException ex) {
-            Logger.getLogger(SoundList.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    public static void refreshStatic(){
-        SoundList sl = new SoundList();
-        sl.refresh();
-    }
-    
-    public static Map<Integer, String> getSongsVisu() {
+    public Map<Integer, String> getSongsVisu() {
         return songsVisu;
     }
-    
-    public static String getSondFileName(int id) {
+
+    public String getSondFileName(int id) {
         return songsRaw.get(id);
     }
-    
-    private void read() throws IOException {
+
+    public static Map<String, SoundList> read(Config config) throws IOException {
         File file = new File(config.getServer().liste);
-        if (!file.exists()){
+        if (!file.exists()) {
             throw new FileNotFoundException();
         }
-        songsVisu = new TreeMap<>();
-        songsRaw = new HashMap<>();
-        List<String> sons = FileUtils.readLines(file, "UTF-8");
+        Map<String, SoundList> res = new HashMap<>();
         Integer id = 1;
-        for (String son : sons) {
-            if (son.startsWith("#")){
+        List<String> lines = FileUtils.readLines(file, "UTF-8");
+        for (String line : lines) {
+            if (line.startsWith("#")) {
                 continue;
             }
-            String[] line = son.split(";");
-            songsRaw.put(id, line[0]);
-            songsVisu.put(id, line[1]);
+            if (line.isEmpty()) {
+                continue;
+            }
+            ListLine lline = new ListLine(line);
+            if (!res.containsKey(lline.getChannel())) {
+                SoundList sl = new SoundList();
+                sl.songsRaw = new HashMap<>();
+                sl.songsVisu = new TreeMap<>();
+                res.put(lline.getChannel(), sl);
+            }
+            res.get(lline.getChannel()).songsRaw.put(id, lline.getAbsoluteFileName());
+            res.get(lline.getChannel()).songsVisu.put(id, lline.getName());
             id++;
         }
+        return res;
     }
 
 }
